@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boxes</title>
+</head>
+<body>
+  <h1>Boxes</h1>
+  <ul>
+    <% allBoxes.forEach(function(box) { %>
+      <li>
+        <h2><%= box.name %></h2>
+        <p>Description: <%= box.description %></p>
+        <p>Prix: %= box.price %></p>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
