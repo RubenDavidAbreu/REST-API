@@ -9,6 +9,8 @@ Pour chaque tâche que vous devez réaliser, en dessous du nom de la tâche et d
 
 **Analyse des besoins (Use case) :**
 - Arno
+![Diagramme Use Case](Usecase.png "Use Case")
+
 
 **Diagramme de collaboration :**
 - Ruben
