@@ -44,9 +44,9 @@ async function fetchDataAndRenderPage() {
   
 }
 
-// Fonction pour configurer les routes de l'application
+// Fonction pour configurer les chemins de l'application
 async function setupRoutes() {
-  // Route principale qui rend la page des boîtes
+  // chemins principale qui rend la page des boîtes
   app.get('/', async (req, res) => {
     const allBoxes = await fetchDataAndRenderPage(); // Récupération et transformation des données
     res.render('box', { allBoxes }); // Envoi des données au template 'box' pour le rendu
