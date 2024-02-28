@@ -54,7 +54,7 @@ async function setupRoutes() {
   
 }
 
-// Configuration des routes et gestion des erreurs potentielles
+// Configuration et gestion des erreurs potentielles
 setupRoutes().catch(console.error);
 
 // Démarrage du serveur sur le port 3000
