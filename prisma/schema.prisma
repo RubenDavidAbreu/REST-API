@@ -8,19 +8,23 @@ datasource db {
 }
 
 model aliment {
-  idAliment  Int          @id
-  nom        String       @db.VarChar(255)
-  boxaliment boxaliment[]
+  idAliment Int    @id
+  idBox     Int
+  nom       String @db.VarChar(255)
+  quantity  Int
+  box       box    @relation(fields: [idBox], references: [idBox], onDelete: NoAction, onUpdate: NoAction, map: "aliment_ibfk_1")
+
+  @@index([idBox], map: "idBox")
 }
 
 model box {
-  idBox      Int          @id
-  nom        String       @db.VarChar(255)
-  pieces     Int
-  price      Float        @db.Float
-  image      String       @db.VarChar(255)
-  boxaliment boxaliment[]
-  flavor     flavor[]
+  idBox   Int       @id
+  nom     String    @db.VarChar(255)
+  pieces  Int
+  price   Float     @db.Float
+  image   String    @db.VarChar(255)
+  flavor  flavor[]
+  aliment aliment[]
 }
 
 model flavor {
@@ -29,17 +33,5 @@ model flavor {
   nom      String @db.VarChar(255)
   box      box    @relation(fields: [idBox], references: [idBox], onDelete: NoAction, onUpdate: NoAction, map: "flavor_ibfk_1")
 
-  @@index([idBox], map: "idBox")
-}
-
-model boxaliment {
-  idAliment Int
-  idBox     Int
-  quantity  Int
-  box       box     @relation(fields: [idBox], references: [idBox], onDelete: NoAction, onUpdate: NoAction, map: "boxaliment_ibfk_1")
-  aliment   aliment @relation(fields: [idAliment], references: [idAliment], onDelete: NoAction, onUpdate: NoAction, map: "boxaliment_ibfk_2")
-
-  @@id([idBox, idAliment])
-  @@index([idAliment], map: "idAliment")
   @@index([idBox], map: "idBox")
 }
