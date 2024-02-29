@@ -13,7 +13,7 @@ exports.getAllBoxes = async (req, res) => {
       const aliment = box.aliment.map((alim) => {
         if (alim) {
           return {
-            nom: alim.nom,
+            name: alim.name,
             quantity: alim.quantity,
           };
         }
@@ -21,7 +21,7 @@ exports.getAllBoxes = async (req, res) => {
       const flavor = box.flavor.map((flav) => {
         if (flav) {
           return {
-            nom: flav.nom,
+            name: flav.name,
           };
         }
       });
