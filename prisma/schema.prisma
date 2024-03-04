@@ -10,7 +10,7 @@ datasource db {
 model aliment {
   idAliment Int    @id
   idBox     Int
-  name       String @db.VarChar(255)
+  name      String @db.VarChar(255)
   quantity  Int
   box       box    @relation(fields: [idBox], references: [idBox], onDelete: NoAction, onUpdate: NoAction, map: "aliment_ibfk_1")
 
@@ -19,7 +19,7 @@ model aliment {
 
 model box {
   idBox   Int       @id
-  name     String    @db.VarChar(255)
+  name    String    @db.VarChar(255)
   pieces  Int
   price   Float     @db.Float
   image   String    @db.VarChar(255)
@@ -30,7 +30,7 @@ model box {
 model flavor {
   idFlavor Int    @id
   idBox    Int
-  name      String @db.VarChar(255)
+  name     String @db.VarChar(255)
   box      box    @relation(fields: [idBox], references: [idBox], onDelete: NoAction, onUpdate: NoAction, map: "flavor_ibfk_1")
 
   @@index([idBox], map: "idBox")

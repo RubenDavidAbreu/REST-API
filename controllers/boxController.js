@@ -39,6 +39,50 @@ exports.getAllBoxes = async (req, res) => {
   }
 };
 
-exports.getAllBoxes = async (req, res) => {
-  
-}
+exports.createBox = async (req, res) => {
+  try {
+    // Récupération des données envoyées dans la requête, y compris idBox
+    const { idBox, name, pieces, price, image, aliment, flavor } = req.body;
+
+    // Validation basique des données d'entrée, y compris idBox
+    if (typeof idBox === 'undefined' || !name || typeof pieces === 'undefined' || typeof price === 'undefined' || !image) {
+      return res.status(400).send("Certaines données nécessaires sont manquantes.");
+    }
+
+    // Création d'une nouvelle boîte dans la base de données
+    const newBox = await prisma.box.create({
+      data: {
+        idBox, // Inclure idBox ici
+        name,
+        pieces,
+        price,
+        image,
+        aliment: {
+          create: aliment,
+        },
+        flavor: {
+          create: flavor,
+        },
+      },
+      include: {
+        aliment: true,
+        flavor: true,
+      },
+    });
+
+    // Envoie la boîte nouvellement créée en réponse
+    res.status(201).json(newBox);
+  } catch (error) {
+    res.status(500).send(`Erreur lors de la création de la boîte : ${error.message}`);
+  }
+};
+
+
+
+
+
+
+
+
+
+
