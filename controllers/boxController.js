@@ -9,7 +9,7 @@ exports.getAllBoxes = async (req, res) => {
         flavor: true,
       },
     });
-    const camion = allBoxes.map(box => {
+    const camion = allBoxes.map((box) => {
       const aliment = box.aliment.map((alim) => {
         if (alim) {
           return {
@@ -38,3 +38,7 @@ exports.getAllBoxes = async (req, res) => {
     res.status(500).send(`Erreur lors de la récupération des boîtes ${error}`);
   }
 };
+
+exports.getAllBoxes = async (req, res) => {
+  
+}

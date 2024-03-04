@@ -5,5 +5,6 @@ const boxController = require('../controllers/boxController');
 
 //utilisation et définition du chemin des routeurs
 router.get('/', boxController.getAllBoxes);
+// router.get('/', boxController.createBoxes);
 
 module.exports = router;

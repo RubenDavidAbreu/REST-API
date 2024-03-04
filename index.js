@@ -12,6 +12,8 @@ app.use('/boxes', boxRoutes); //Utilisation d'un "Routeur"
 
 //utilisation et définition du chemin des routeurs
 app.get('/', boxController.getAllBoxes);
+// app.get('/', boxController.createBoxes);
+
 // app.post('/', boxController.AllBoxes);
 // Démarrage du serveur sur le port 3000
 app.listen(3000, () => {
