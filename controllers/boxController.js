@@ -69,7 +69,20 @@ exports.createBox = async (req, res) => {
   }
 };
 
+exports.deleteBox = async(req, res)=>{
+  try {
+    const  idBox  = req.body;
 
+    const deleteBox = await prisma.box.delete({
+      where:{
+        idBox
+      }
+    });
+    res.status(200).json(deleteBox);    
+  } catch (error) {
+    res.status(500).send(`Erreur lors de la suppression de la boîte : ${error.message}`);
+  }
+}
 
 
 
