@@ -9,7 +9,7 @@ exports.getAllBoxes = async (req, res) => {
         flavor: true,
       },
     });
-    const camion = allBoxes.map(box => {
+    const camion = allBoxes.map((box) => {
       const aliment = box.aliment.map((alim) => {
         if (alim) {
           return {
@@ -38,3 +38,56 @@ exports.getAllBoxes = async (req, res) => {
     res.status(500).send(`Erreur lors de la récupération des boîtes ${error}`);
   }
 };
+
+exports.createBox = async (req, res) => {
+  try {
+  
+    const { idBox, name, pieces, price, image, aliment, flavor } = req.body;
+    const newBox = await prisma.box.create({
+      data: {
+        idBox, 
+        name,
+        pieces,
+        price,
+        image,
+        aliment: {
+          create: aliment,
+        },
+        flavor: {
+          create: flavor,
+        },
+      },
+      include: {
+        aliment: true,
+        flavor: true,
+      },
+    });
+    
+    res.status(201).json(newBox);
+  } catch (error) {
+    res.status(500).send(`Erreur lors de la création de la boîte : ${error.message}`);
+  }
+};
+
+exports.deleteBox = async(req, res)=>{
+  try {
+    const  idBox  = req.body;
+
+    const deleteBox = await prisma.box.delete({
+      where:{
+        idBox: idBox
+      }
+    });
+    res.status(200).json(deleteBox);    
+  } catch (error) {
+    res.status(500).send(`Erreur lors de la suppression de la boîte : ${error.message}`);
+  }
+}
+
+
+
+
+
+
+
+
