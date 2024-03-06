@@ -83,11 +83,3 @@ exports.deleteBox = async(req, res)=>{
     res.status(500).send(`Erreur lors de la suppression de la boîte : ${error.message}`);
   }
 }
-
-
-
-
-
-
-
-
