@@ -71,7 +71,7 @@ exports.createBox = async (req, res) => {
 
 exports.deleteBox = async(req, res)=>{
   try {
-    const  idBox  = req.body;
+    const  idBox  = parseInt(req.body.idBox);
 
     const deleteBox = await prisma.box.delete({
       where:{
