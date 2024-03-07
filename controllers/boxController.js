@@ -71,15 +71,53 @@ exports.createBox = async (req, res) => {
 
 exports.deleteBox = async(req, res)=>{
   try {
-    const  idBox  = parseInt(req.body.idBox);
+    const idBox = parseInt(req.body.idBox);
 
-    const deleteBox = await prisma.box.delete({
+    const deleteAliment = prisma.aliment.deleteMany({
       where:{
         idBox: idBox
       }
     });
-    res.status(200).json(deleteBox);    
+
+
+    const deleteFlavor = prisma.flavor.deleteMany({
+      where:{
+        idBox: idBox
+      }
+    });
+
+    const deleteBox = prisma.box.delete({
+      where:{
+        idBox: idBox
+      }
+    });
+
+    const deleteAll =  await prisma.$transaction([deleteAliment, deleteFlavor, deleteBox]);
+
+    res.status(200).json(deleteAll);    
   } catch (error) {
     res.status(500).send(`Erreur lors de la suppression de la boîte : ${error.message}`);
   }
+}
+
+exports.updateBox = async(req, res)=>{
+  try {
+    const { idBox, name, pieces, price, image } = req.body;
+
+    const updateBox = await prisma.box.update({
+      where: {
+        idBox: idBox
+      },
+      data: {
+        name: name,
+        pieces: pieces,
+        price: price,
+        image: image
+      }
+    });
+    res.status(200).json(updateBox);
+  } catch (error) {
+    res.status(500).send(`Erreur lors de la modification de la boîte : ${error.message}`);
+  }
+
 }
