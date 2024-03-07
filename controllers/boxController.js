@@ -79,6 +79,7 @@ exports.deleteBox = async(req, res)=>{
       }
     });
 
+
     const deleteFlavor = prisma.flavor.deleteMany({
       where:{
         idBox: idBox
@@ -118,4 +119,5 @@ exports.updateBox = async(req, res)=>{
   } catch (error) {
     res.status(500).send(`Erreur lors de la modification de la boîte : ${error.message}`);
   }
+
 }
