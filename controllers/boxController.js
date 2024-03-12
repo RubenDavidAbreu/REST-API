@@ -32,7 +32,7 @@ exports.getAllBoxes = async (req, res) => {
       };
     });
 
-    res.send(`<pre>${JSON.stringify(camion, null, 2)}</pre>`);
+    res.send(JSON.stringify(camion, null, 2));
     // Transformez vos données ici si nécessaire
   } catch (error) {
     res.status(500).send(`Erreur lors de la récupération des boîtes ${error}`);
