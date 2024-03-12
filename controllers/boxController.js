@@ -119,5 +119,4 @@ exports.updateBox = async(req, res)=>{
   } catch (error) {
     res.status(500).send(`Erreur lors de la modification de la boîte : ${error.message}`);
   }
-
 }
