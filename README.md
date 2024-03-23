@@ -28,9 +28,8 @@ Pour chaque tâche que vous devez réaliser, en dessous du nom de la tâche et d
 **Architecture fonctionnelle de l’application :**
 - A définir (en cours)
 
-**Rédaction README :**
-- Ruben (en cours)
-
+<br>
+<br>
 <h2 style="color: blue;">L401_2</h2>
 
 **Création de l’API :**
